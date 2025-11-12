@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useMemo } from "react";
 
 interface Transaction {
   type: string;
@@ -62,6 +63,21 @@ export default function RewardsProfile() {
 
   const levelProgress = (userPoints / 5000) * 100;
 
+  const names = [
+    "Leonardo Matos",
+    "Ana Souza",
+    "Carlos Lima",
+    "Mariana Rocha",
+    "João Silva",
+    "Paula Costa",
+    "Rafael Almeida",
+  ];
+
+  const userName = useMemo(
+    () => names[Math.floor(Math.random() * names.length)],
+    []
+  );
+
   return (
     <div className="max-w-md mx-auto px-4 py-6">
       {/* Profile Header */}
@@ -69,9 +85,7 @@ export default function RewardsProfile() {
         <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-appYellow to-appBlue rounded-full flex items-center justify-center">
           <span className="text-5xl">👤</span>
         </div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">
-          Leonardo Matos
-        </h1>
+        <h1 className="text-2xl font-bold text-gray-900 mb-1">{userName}</h1>
         <p className="text-gray-600">Membro desde Nov 2025</p>
       </div>
 
@@ -80,7 +94,7 @@ export default function RewardsProfile() {
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="bg-blue-50 rounded-2xl p-4"
+          className="bg-slate-50 rounded-2xl p-4"
         >
           <div className="text-3xl mb-2">💰</div>
           <p className="text-2xl font-bold text-appBlue">
@@ -93,7 +107,7 @@ export default function RewardsProfile() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.1 }}
-          className="bg-green-50 rounded-2xl p-4"
+          className="bg-slate-50 rounded-2xl p-4"
         >
           <div className="text-3xl mb-2">📈</div>
           <p className="text-2xl font-bold text-green-600">
@@ -106,7 +120,7 @@ export default function RewardsProfile() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="bg-purple-50 rounded-2xl p-4"
+          className="bg-slate-50 rounded-2xl p-4"
         >
           <div className="text-3xl mb-2">🎁</div>
           <p className="text-2xl font-bold text-purple-600">{totalRedeemed}</p>
@@ -117,7 +131,7 @@ export default function RewardsProfile() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="bg-yellow-50 rounded-2xl p-4"
+          className="bg-slate-50 rounded-2xl p-4"
         >
           <div className="text-3xl mb-2">🎫</div>
           <p className="text-2xl font-bold text-yellow-600">{drawsEntered}</p>
@@ -126,7 +140,7 @@ export default function RewardsProfile() {
       </div>
 
       {/* Level Progress */}
-      <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 mb-8">
+      <div className="bg-slate-50 rounded-2xl p-6 mb-8">
         <div className="flex justify-between items-center mb-3">
           <div>
             <p className="text-sm text-gray-600 mb-1">Nível Atual</p>
@@ -137,7 +151,7 @@ export default function RewardsProfile() {
             <p className="text-xl font-bold text-appBlue">Gold</p>
           </div>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-3 mb-2">
+        <div className="w-full bg-slate-200 rounded-full h-3 mb-2">
           <div
             className="bg-gradient-to-r from-appBlue to-blue-600 h-3 rounded-full transition-all"
             style={{ width: `${levelProgress}%` }}
@@ -158,7 +172,7 @@ export default function RewardsProfile() {
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-gray-50 rounded-2xl p-4"
+              className="bg-slate-50 rounded-2xl p-4"
             >
               <div className="flex justify-between items-start mb-2">
                 <div>
@@ -188,7 +202,7 @@ export default function RewardsProfile() {
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: index * 0.05 }}
-              className="flex items-center justify-between bg-gray-50 rounded-2xl p-4"
+              className="flex items-center justify-between bg-slate-50 rounded-2xl p-4"
             >
               <div className="flex items-center space-x-3">
                 <div
@@ -226,7 +240,7 @@ export default function RewardsProfile() {
       <div className="mb-8">
         <h3 className="text-xl font-bold text-gray-900 mb-4">Configurações</h3>
         <div className="space-y-3">
-          <button className="w-full bg-gray-50 rounded-2xl p-4 flex items-center justify-between hover:bg-gray-100 transition-colors">
+          <button className="w-full bg-slate-50 rounded-2xl p-4 flex items-center justify-between hover:bg-slate-100 transition-colors">
             <div className="flex items-center space-x-3">
               <span className="text-2xl">🔔</span>
               <span className="font-medium text-gray-900">Notificações</span>
@@ -234,7 +248,7 @@ export default function RewardsProfile() {
             <span className="text-gray-400">›</span>
           </button>
 
-          <button className="w-full bg-gray-50 rounded-2xl p-4 flex items-center justify-between hover:bg-gray-100 transition-colors">
+          <button className="w-full bg-slate-50 rounded-2xl p-4 flex items-center justify-between hover:bg-slate-100 transition-colors">
             <div className="flex items-center space-x-3">
               <span className="text-2xl">❓</span>
               <span className="font-medium text-gray-900">Ajuda</span>

@@ -20,89 +20,76 @@ interface Draw {
 }
 
 export default function RewardsHome() {
-  const userPoints = 2450;
+  const names = ["Ana", "Bruno", "Camila", "Diego", "Elisa", "Felipe", "Gabriela"];
+  const userName = names[Math.floor(Math.random() * names.length)];
+  const userPoints = Math.floor(10000 + Math.random() * 70000);
 
   const prizes: Prize[] = [
+    // Only cash prizes (vales) per user request
     {
-      name: "iPhone 15 Pro",
+      name: "Vale R$ 50",
       points: 5000,
-      icon: "📱",
-      color: "bg-blue-500",
-      category: "Eletrônicos",
-      progress: 49,
-    },
-    {
-      name: "AirPods Pro",
-      points: 2000,
-      icon: "🎧",
-      color: "bg-purple-500",
-      category: "Áudio",
-      progress: 100,
-    },
-    {
-      name: "Apple Watch",
-      points: 3500,
-      icon: "⌚",
-      color: "bg-pink-500",
-      category: "Wearables",
-      progress: 70,
-    },
-    {
-      name: "MacBook Air",
-      points: 8000,
-      icon: "💻",
-      color: "bg-gray-500",
-      category: "Computadores",
-      progress: 30,
-    },
-    {
-      name: "Vale Compras",
-      points: 1000,
-      icon: "🎁",
+      icon: "💵",
       color: "bg-green-500",
-      category: "Vales",
+      category: "Dinheiro",
       progress: 100,
     },
     {
-      name: "Fone Bluetooth",
-      points: 800,
-      icon: "🎵",
-      color: "bg-yellow-500",
-      category: "Áudio",
-      progress: 100,
+      name: "Vale R$ 100",
+      points: 10000,
+      icon: "💵",
+      color: "bg-green-600",
+      category: "Dinheiro",
+      progress: 80,
+    },
+    {
+      name: "Vale R$ 200",
+      points: 20000,
+      icon: "💵",
+      color: "bg-green-700",
+      category: "Dinheiro",
+      progress: 60,
+    },
+    {
+      name: "Vale R$ 500",
+      points: 50000,
+      icon: "💵",
+      color: "bg-green-800",
+      category: "Dinheiro",
+      progress: 30,
     },
   ];
 
   const activeDraws: Draw[] = [
     {
-      name: "Sorteio iPhone 15",
+      name: "Sorteio Vale R$ 500",
       date: "2025-11-20",
-      entryCost: 500,
-      prize: "iPhone 15 Pro",
+      entryCost: 5000,
+      prize: "R$ 500",
       participants: 1234,
     },
     {
-      name: "Sorteio AirPods",
+      name: "Sorteio Vale R$ 200",
       date: "2025-11-15",
-      entryCost: 200,
-      prize: "AirPods Pro",
+      entryCost: 2000,
+      prize: "R$ 200",
       participants: 2456,
     },
     {
-      name: "Sorteio MacBook",
+      name: "Sorteio Vale R$ 1000",
       date: "2025-11-25",
-      entryCost: 1000,
-      prize: "MacBook Air M2",
+      entryCost: 10000,
+      prize: "R$ 1000",
       participants: 876,
     },
   ];
 
   return (
-    <div className="max-w-md mx-auto px-4 py-6">
+    <div className="max-w-md mx-auto px-4 py-6 bg-slate-50 rounded-xl">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900 mb-2">
-          Olá, Leonardo! 👋
+          Olá, {userName}! 👋
         </h1>
         <p className="text-gray-600">Confira seus pontos e prêmios</p>
       </div>
@@ -116,13 +103,13 @@ export default function RewardsHome() {
         <p className="text-sm opacity-90 mb-2">Seus Pontos</p>
         <h2 className="text-5xl font-bold mb-4">{userPoints.toLocaleString()}</h2>
         <div className="flex space-x-3">
-          <button className="flex-1 bg-white/20 backdrop-blur-sm py-2 rounded-xl text-sm font-medium hover:bg-white/30 transition-colors">
+          <button className="flex-1 bg-slate-800/20 backdrop-blur-sm py-2 rounded-xl text-sm font-medium hover:bg-slate-800/30 transition-colors">
             Ganhar
           </button>
-          <button className="flex-1 bg-white/20 backdrop-blur-sm py-2 rounded-xl text-sm font-medium hover:bg-white/30 transition-colors">
+          <button className="flex-1 bg-slate-800/20 backdrop-blur-sm py-2 rounded-xl text-sm font-medium hover:bg-slate-800/30 transition-colors">
             Resgatar
           </button>
-          <button className="flex-1 bg-white/20 backdrop-blur-sm py-2 rounded-xl text-sm font-medium hover:bg-white/30 transition-colors">
+          <button className="flex-1 bg-slate-800/20 backdrop-blur-sm py-2 rounded-xl text-sm font-medium hover:bg-slate-800/30 transition-colors">
             Histórico
           </button>
         </div>
@@ -142,7 +129,7 @@ export default function RewardsHome() {
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-gray-50 rounded-2xl p-4"
+              className="bg-slate-100 rounded-2xl p-4"
             >
               <div className="flex justify-between items-start mb-3">
                 <div>
@@ -182,12 +169,12 @@ export default function RewardsHome() {
 
         <div className="grid grid-cols-2 gap-3">
           {prizes.map((prize, index) => (
-            <motion.div
+              <motion.div
               key={index}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: index * 0.05 }}
-              className="bg-gray-50 rounded-2xl p-4"
+                className="bg-slate-100 rounded-2xl p-4"
             >
               <div className={`w-12 h-12 ${prize.color} rounded-xl flex items-center justify-center text-2xl mb-3`}>
                 {prize.icon}

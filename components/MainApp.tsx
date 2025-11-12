@@ -3,6 +3,7 @@
 import { useState } from "react";
 import RewardsHome from "./RewardsHome";
 import RewardsProfile from "./RewardsProfile";
+import RewardsPartners from "./RewardsPartners";
 
 export default function MainApp() {
   const [activeTab, setActiveTab] = useState(0);
@@ -10,10 +11,11 @@ export default function MainApp() {
   return (
     <div className="min-h-screen bg-white pb-20">
       {activeTab === 0 && <RewardsHome />}
-      {activeTab === 1 && <RewardsProfile />}
+      {activeTab === 1 && <RewardsPartners />}
+      {activeTab === 2 && <RewardsProfile />}
 
       {/* Bottom Tab Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 flex justify-around">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-2 py-3 flex justify-around">
         <button
           onClick={() => setActiveTab(0)}
           className={`flex flex-col items-center space-y-1 ${
@@ -40,6 +42,28 @@ export default function MainApp() {
           onClick={() => setActiveTab(1)}
           className={`flex flex-col items-center space-y-1 ${
             activeTab === 1 ? "text-appBlue" : "text-gray-400"
+          }`}
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+            />
+          </svg>
+          <span className="text-xs font-medium">Parceiros</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab(2)}
+          className={`flex flex-col items-center space-y-1 ${
+            activeTab === 2 ? "text-appBlue" : "text-gray-400"
           }`}
         >
           <svg
