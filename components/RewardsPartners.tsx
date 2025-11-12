@@ -164,38 +164,43 @@ export default function RewardsPartners() {
 
   return (
     <div className="px-4 py-6 pb-24">
+      <div className="mb-4">
+        <h1 className="text-2xl font-bold text-gray-900">Poupe &amp; Ganhe</h1>
+      </div>
       {/* Header Stats */}
       <div className="grid grid-cols-2 gap-4 mb-8">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-slate-50 rounded-2xl p-4 text-gray-900"
+          className="rounded-2xl p-6"
+          style={{ backgroundColor: '#Fcfc30' }}
         >
-          <p className="text-xs opacity-80 mb-1">Parceiros conectados</p>
-          <p className="text-2xl font-semibold">{connectedCount}</p>
+          <p className="text-xs opacity-80 mb-1 text-black">Parceiros conectados</p>
+          <p className="text-2xl font-semibold text-black">{connectedCount}</p>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05 }}
-          className="bg-slate-50 rounded-2xl p-4 text-gray-900"
+          className="rounded-2xl p-6"
+          style={{ backgroundColor: '#465eff' }}
         >
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs text-gray-600">Disponíveis</p>
-              <p className="text-xl font-semibold text-gray-900">{availablePoints}</p>
+              <p className="text-xs text-white/90">Disponíveis</p>
+              <p className="text-xl font-semibold text-white">{availablePoints}</p>
             </div>
             <div className="text-right">
-              <p className="text-xs text-gray-600">Pendentes</p>
-              <p className="text-xl font-semibold text-green-600">{pendingPoints}</p>
+              <p className="text-xs text-white/90">Pendentes</p>
+              <p className="text-xl font-semibold text-green-300">{pendingPoints}</p>
             </div>
           </div>
 
           <div className="mt-3">
             <button
               onClick={() => setShowSheet(true)}
-              className="bg-slate-100 text-gray-700 text-xs px-3 py-1 rounded-full"
+              className="bg-white text-sm text-gray-900 px-3 py-1 rounded-full"
             >
               Como funciona
             </button>

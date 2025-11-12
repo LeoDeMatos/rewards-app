@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 interface Prize {
   name: string;
@@ -84,21 +85,49 @@ export default function RewardsHome() {
     },
   ];
 
+  const instantPrizes = [
+    { name: "Roda da Sorte", cost: 100, prizeMax: 5000, icon: "🎡", color: "bg-white" },
+    { name: "Raspadinha", cost: 50, prizeMax: 1000, icon: "🎫", color: "bg-white" },
+    { name: "Keno (instantâneo)", cost: 150, prizeMax: 7500, icon: "🎲", color: "bg-white" },
+    { name: "Plinko (tipo The Wall)", cost: 80, prizeMax: 3000, icon: "🟣", color: "bg-white" },
+  ];
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("userPoints", String(userPoints));
+    } catch (e) {
+      // ignore
+    }
+  }, [userPoints]);
+
   return (
-    <div className="max-w-md mx-auto px-4 py-6 bg-slate-50 rounded-xl">
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">
-          Olá, {userName}! 👋
-        </h1>
-        <p className="text-gray-600">Confira seus pontos e prêmios</p>
+    <div className="max-w-md mx-auto px-4 py-6">
+      {/* Top Hero (Poupe & Ganhe) */}
+      <div
+        className="mb-6 rounded-2xl p-6 shadow-lg"
+        style={{ backgroundColor: '#Fcfc30' }}
+      >
+        <div>
+          <h1 className="text-lg font-bold text-black">Poupe &amp; Ganhe</h1>
+          <p className="text-sm text-gray-800 mt-1">Título de capitalização (popular) indexado ao IPCA (Índice de Preços ao Consumidor Amplo) + taxa real.</p>
+
+          <div className="flex gap-2 mt-3">
+            <button className="text-xs bg-white px-3 py-1 rounded-full text-black">Sorteios semanais</button>
+            <button className="text-xs bg-white px-3 py-1 rounded-full text-black">Mensais</button>
+          </div>
+
+          <div className="mt-4">
+            <button className="w-full bg-black text-white rounded-full px-5 py-3 font-semibold">Abrir meu título</button>
+          </div>
+        </div>
       </div>
 
       {/* Points Card */}
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="bg-gradient-to-br from-appBlue to-blue-600 rounded-3xl p-6 mb-8 text-white shadow-lg"
+        className="rounded-3xl p-8 mb-8 text-white shadow-lg"
+        style={{ backgroundColor: '#465eff' }}
       >
         <p className="text-sm opacity-90 mb-2">Seus Pontos</p>
         <h2 className="text-5xl font-bold mb-4">{userPoints.toLocaleString()}</h2>
@@ -114,90 +143,31 @@ export default function RewardsHome() {
           </button>
         </div>
       </motion.div>
-
-      {/* Active Draws */}
+      {/* Prizes Grid (Instant wins) */}
       <div className="mb-8">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-bold text-gray-900">Sorteios Ativos</h3>
-          <button className="text-appBlue text-sm font-medium">Ver todos</button>
-        </div>
-
-        <div className="space-y-3">
-          {activeDraws.map((draw, index) => (
-            <motion.div
-              key={index}
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-slate-100 rounded-2xl p-4"
-            >
-              <div className="flex justify-between items-start mb-3">
-                <div>
-                  <h4 className="font-semibold text-gray-900">{draw.name}</h4>
-                  <p className="text-sm text-gray-600">{draw.prize}</p>
-                </div>
-                <span className="text-xs bg-appYellow/20 text-gray-700 px-2 py-1 rounded-full font-medium">
-                  {new Date(draw.date).toLocaleDateString("pt-BR")}
-                </span>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <div className="text-sm text-gray-600">
-                  <span className="font-medium text-gray-900">
-                    {draw.participants}
-                  </span>{" "}
-                  participantes
-                </div>
-                <button
-                  disabled={userPoints < draw.entryCost}
-                  className="bg-appBlue text-white px-6 py-2 rounded-xl text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
-                >
-                  {draw.entryCost} pts
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Prizes Grid */}
-      <div className="mb-8">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-bold text-gray-900">Prêmios</h3>
-          <button className="text-appBlue text-sm font-medium">Ver todos</button>
+          <h3 className="text-xl font-bold text-gray-900">Premiações instantâneas</h3>
+          <button className="text-sm bg-slate-100 px-3 py-1 rounded-full">Responsável</button>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
-          {prizes.map((prize, index) => (
-              <motion.div
+          {instantPrizes.map((prize, index) => (
+            <motion.div
               key={index}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: index * 0.05 }}
-                className="bg-slate-100 rounded-2xl p-4"
+              className="bg-white rounded-2xl p-4 shadow-sm"
             >
               <div className={`w-12 h-12 ${prize.color} rounded-xl flex items-center justify-center text-2xl mb-3`}>
                 {prize.icon}
               </div>
-              <h4 className="font-semibold text-gray-900 text-sm mb-1">
-                {prize.name}
-              </h4>
-              <p className="text-appBlue font-bold text-sm mb-2">
-                {prize.points.toLocaleString()} pts
-              </p>
-              
-              <div className="mb-2">
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div
-                    className="bg-appBlue h-2 rounded-full transition-all"
-                    style={{ width: `${prize.progress}%` }}
-                  />
-                </div>
+              <h4 className="font-semibold text-gray-900 text-sm mb-1">{prize.name}</h4>
+              <p className="text-xs text-gray-600 mb-2">Custo: {prize.cost} pts</p>
+              <p className="text-xs text-gray-600 mb-3">Prêmio máx: R$ {prize.prizeMax.toLocaleString()}</p>
+              <div className="mt-2">
+                <button className="w-full bg-appBlue text-white py-2 rounded-xl text-sm font-medium">Entrar</button>
               </div>
-              
-              <p className="text-xs text-gray-600">
-                {prize.progress >= 100 ? "Disponível" : `${prize.progress}% completo`}
-              </p>
             </motion.div>
           ))}
         </div>

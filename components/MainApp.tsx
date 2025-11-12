@@ -15,7 +15,7 @@ export default function MainApp() {
       {activeTab === 2 && <RewardsProfile />}
 
       {/* Bottom Tab Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-2 py-3 flex justify-around">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-2 py-3 flex justify-around items-center">
         <button
           onClick={() => setActiveTab(0)}
           className={`flex flex-col items-center space-y-1 ${

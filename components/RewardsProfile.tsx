@@ -162,33 +162,7 @@ export default function RewardsProfile() {
         </p>
       </div>
 
-      {/* My Draws */}
-      <div className="mb-8">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">Meus Sorteios</h3>
-        <div className="space-y-3">
-          {myDraws.map((draw, index) => (
-            <motion.div
-              key={index}
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-slate-50 rounded-2xl p-4"
-            >
-              <div className="flex justify-between items-start mb-2">
-                <div>
-                  <h4 className="font-semibold text-gray-900">{draw.name}</h4>
-                  <p className="text-sm text-gray-600">
-                    Bilhete: {draw.ticket}
-                  </p>
-                </div>
-                <span className="text-xs bg-appYellow/20 text-gray-700 px-2 py-1 rounded-full font-medium">
-                  {new Date(draw.date).toLocaleDateString("pt-BR")}
-                </span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+      {/* My Draws removed as requested */}
 
       {/* Transaction History */}
       <div className="mb-8">
