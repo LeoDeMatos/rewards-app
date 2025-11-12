@@ -348,7 +348,7 @@ export default function RewardsPartners() {
               - Pontos Disponíveis: correspondem a transações já confirmadas (ex.: transações antigas).
             </p>
             <p className="text-sm text-gray-700 mb-3">
-              - Pontos Pendentes: correspondem a transações recentes ("Hoje" ou "Ontem"). Esses pontos serão liberados assim que a transação for confirmada pelo parceiro (prazo estimado: alguns dias).
+              - Pontos Pendentes: correspondem a transações recentes (&quot;Hoje&quot; ou &quot;Ontem&quot;). Esses pontos serão liberados assim que a transação for confirmada pelo parceiro (prazo estimado: alguns dias).
             </p>
             <p className="text-sm text-gray-700 mb-4">
               Observação: Esta é uma simulação de disponibilidade. No sistema real o prazo e regras de liberação podem variar por parceiro.
